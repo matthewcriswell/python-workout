@@ -72,7 +72,7 @@ while success == 0:
 print("Now let's try a word guessing game.  Try to guess a word.")
 
 from english_words import get_english_words_set
-a_lot_of_words = list(get_english_words_set(['web2']))
+a_lot_of_words = list(get_english_words_set(['web2'], lower=True))
 less_words = []
 for i in a_lot_of_words:
     if len(i) < 6:
