@@ -14,7 +14,7 @@ def run_timing():
     runs = 0
     while True:
         time = input("Enter 10 km run time: ")
-        if time == '':
+        if not time:
             break
         else:
             try:
