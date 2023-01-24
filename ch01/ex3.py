@@ -20,7 +20,7 @@ def run_timing():
             try:
                 times.append(float(time))
                 runs += 1
-            except:
+            except ValueError as e:
                 print("Bad value")
     sample_size, total = mysum(times) 
     average = total/runs
