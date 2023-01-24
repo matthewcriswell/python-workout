@@ -70,3 +70,15 @@ def wordsfunc(words_list):
     print(f"Longest word: {longest_word}, at {longest_len} chars.  Shortest word: {shortest_word}, at {shortest_len} chars")
     print(f"Average word length: {avg_len}")
     print(f"{words_len_total}")
+
+def objectsfunc(*args):
+    args_list = list(args) 
+    total = 0
+    for thing in args_list:
+        try:
+            num = int(thing)
+            total += num
+        except:
+            pass
+    
+    return total
