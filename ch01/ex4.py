@@ -22,13 +22,13 @@ def hex_output(hex_num):
     hex_num_list = list(hex_num.upper())
     hex_num_list.reverse()
 
-    iteration = 0
     total = 0
-    for i in hex_num_list:
+    for power, i in enumerate(hex_num_list):
         num = hex_dict[i]
-        total += num * (16 ** iteration)
-        iteration += 1
+        total += num * (16 ** power)
     return total
 
 if __name__ == "__main__":
     print(hex_output('99'))
+    print(hex_output('9F'))
+    print(hex_output('1'))
