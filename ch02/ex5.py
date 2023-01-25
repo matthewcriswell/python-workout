@@ -3,7 +3,4 @@ def pig_latin(eng_word):
     vowels_list = ['a', 'e', 'i', 'o', 'u']
     if eng_word[0] in vowels_list:
         return eng_word + 'way'
-    else:
-        return eng_word[1:] + eng_word[:1] + 'ay' 
-       
-
+    return eng_word[1:] + eng_word[:1] + 'ay'
