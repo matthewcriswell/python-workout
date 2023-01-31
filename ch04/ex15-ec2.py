@@ -1,3 +1,4 @@
+from collections import Counter
 #log_fields = ['client_ip', 'client_id', 'client_uid', 'timestamp', 'timeadjustment', 'uri', 'status', 'bytes_sent', 'referer', 'user-agent']
 
 def log_entry_to_dict (log_entry):
@@ -26,5 +27,22 @@ statuscode_ip = {}
 for i in set([int(entry['status_code']) for entry in logs]):
     statuscode_ip[i] = list(set([entry['client_ip'] for entry in logs if entry['status_code'] == str(i)]))
 
+print("")
+print("IPs per requests:")
 for status, clients in statuscode_ip.items():
     print(f"{status}: {clients}")
+
+
+unique_ips = set()
+for i in set([entry['client_ip'] for entry in logs]):
+    unique_ips.add(i) 
+
+ip_req_status_counters = {}
+# create a status_code count keyed off IP adddr and stuff in dict
+for i in unique_ips:
+    ip_req_status_counters[i] = Counter([entry['status_code'] for entry in logs if entry['client_ip'] == i])
+
+print("")
+print("Requests per IP:")
+for item in ip_req_status_counters.items():
+    print(f"{item[0]}:", *item[1].items())
