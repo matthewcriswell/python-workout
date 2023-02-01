@@ -1,25 +1,17 @@
 def filter_func(d):
-    print(f"passed {d} of type {type(d)} to filter_func")
-    #d = dict(d)
     d = dict({d})
-    print(f"Item {d} of type {type(d)} being iterated")
     for item in d.keys():
         if item in 'aeiou':
-            print("Filter func returning the value of True")
             return True
-        print("Filter func returning the value of False")
         return False
 
 def dict_partition(d,f):
     d1 = {}
     d2 = {}
     for item in d.items():
-        print(f"passing {item} of type {type(item)}")
         if f(item):
-            print(f"updating {d1} with {item} which is currently type {type(item)}")
             d1.update(dict({item}))
         else:
-            print(f"updating {d2} with {item} which is currently type {type(item)}")
             d2.update(dict({item}))
     print("d1:", d1)
     print("d2:", d2)
