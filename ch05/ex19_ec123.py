@@ -28,3 +28,22 @@ for i in set([entry['shell'] for entry in passwd_list]):
 for i in user_shell_dict.keys():
     print(f"{i:<20} Users: {user_shell_dict.get(i)}")
 
+def factor_nums(nums):
+    ''' returns a dict of factors from a list of nums '''
+    output_dict = {}
+    for x in nums:
+        output = []
+        for i in range(1, x):
+            if x % i == 0:
+                numerator = x
+                denominator = i
+                quotient = int(numerator/denominator)
+                if denominator not in output and quotient not in output:
+                    output.append(denominator)
+                    output.append(quotient)
+        output_dict.update({x:sorted(set((output)))})
+    return output_dict
+
+#user_nums = input("Enter some integers separate by a space:").split()
+user_nums = [int(item) for item in input("Enter some integers separate by a space:").split()]
+print(factor_nums(user_nums))
