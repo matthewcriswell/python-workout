@@ -3,6 +3,7 @@ from collections import Counter
 
 
 def log_entry_to_dict(log_entry):
+    print(log_entry)
     return {
         'client_ip':
         log_entry.split('"')[0].split()[0],
@@ -23,7 +24,8 @@ def log_entry_to_dict(log_entry):
 
 
 def get_logs():
-    with open('access.log') as file:
+    #with open('access.log') as file:
+    with open('mini-access-log.txt') as file:
         raw_logs = file.readlines()
         return raw_logs
 
