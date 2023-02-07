@@ -1,26 +1,31 @@
+'''
+process file info data into and out of a JSON formatted file
+'''
+
 import json
 import pathlib
 from glob import glob
-from os import stat
 from operator import itemgetter
 
 dir_string = input("Enter a directory:") + '/*'
 files = glob(dir_string)
 json_file = 'file_info.json'
 
+
 def fileinfo(filename):
     ''' this takes a file and returns the size of said file '''
     try:
-        return {"filename": filename, "bytes":pathlib.Path(filename).stat().st_size, "mtime":pathlib.Path(filename).stat().st_mtime}
+        return {
+            "filename": filename,
+            "bytes": pathlib.Path(filename).stat().st_size,
+            "mtime": pathlib.Path(filename).stat().st_mtime
+        }
     except:
         return -1
 
 
 with open(json_file, 'w', encoding='UTF-8') as outfile:
-    json.dump( 
-        [
-            fileinfo(single_file) for single_file in files
-        ], outfile)
+    json.dump([fileinfo(single_file) for single_file in files], outfile)
 
 with open(json_file, 'r', encoding='UTF-8') as infile:
     contents = json.load(infile)
