@@ -33,6 +33,7 @@ def test_addition():
     assert calc('+ 5 -5') == 0
     assert calc('+ -10 -10') == -20
     assert calc('+ 10 10 10 10 10') == 50
+    assert calc('+ 3 5 7') == 15
 
 
 def test_subtraction():
@@ -45,7 +46,7 @@ def test_subtraction():
 def test_division():
     assert calc('/ 3 3') == 1
     assert calc('/ 10 3') == 3.3333333333333335
-
+    assert calc('/ 100 5 5') == 4
 
 def test_multiplication():
     assert calc('* 3 3') == 9
