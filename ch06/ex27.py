@@ -9,7 +9,6 @@ def create_password_generator(valid_chars):
 
     def passwd_gen(num_chars):
         ''' takes a number and returns a randomly generated string of that length '''
-        nonlocal valid_chars
         random_chars = []
         for i in range(num_chars):
             random_chars.append(choice(valid_chars))
