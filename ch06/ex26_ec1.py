@@ -34,20 +34,24 @@ def test_addition():
     assert calc('+ -10 -10') == -20
     assert calc('+ 10 10 10 10 10') == 50
 
+
 def test_subtraction():
     assert calc('- 10 7') == 3
     assert calc('- 1 10') == -9
     assert calc('- 1 1 1') == -1
     assert calc('- 100 1000 1000') == -1900
 
+
 def test_division():
     assert calc('/ 3 3') == 1
     assert calc('/ 10 3') == 3.3333333333333335
+
 
 def test_multiplication():
     assert calc('* 3 3') == 9
     assert calc('* 10 10') == 100
     assert calc('* 5 5 5') == 125
+
 
 def test_exponent():
     assert calc('** 10 3') == 1000
