@@ -1,0 +1,27 @@
+Timer unit: 1e-06 s
+
+Total time: 0.603579 s
+File: ex34.py
+Function: get_sv at line 44
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    44                                           @profile
+    45                                           def get_sv(words_file):
+    46                                               ''' find words with a, e, i, o, and u and return as a set '''
+    47         1         45.0     45.0      0.0      with open(words_file, 'rt') as in_file:
+    48         1      41105.0  41105.0      6.8          words = [word.strip() for word in in_file.readlines()]
+    49                                           
+    50         1          0.0      0.0      0.0      sv_words = []
+    51    235886      26786.0      0.1      4.4      for word in words:
+    52                                                   #word_set = set(word.lower())
+    53    235886      19689.0      0.1      3.3          vowel_mode = 0
+    54   1782566     254651.0      0.1     42.2          for char in set(word.lower()):
+    55                                                       #if char in 'aeiou':
+    56                                                       #    vowel_mode += VOWEL_HASH[char]
+    57   1782566     234485.0      0.1     38.8              vowel_mode += VOWEL_HASH[char]
+    58    229882      25409.0      0.1      4.2          if vowel_mode == 15:
+    59      6004       1041.0      0.2      0.2              sv_words.append(word)
+    60                                           
+    61         1        368.0    368.0      0.1      return set(sv_words)
+
