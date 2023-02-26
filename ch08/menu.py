@@ -1,9 +1,7 @@
 '''  menu. The function takes any number of key-value pairs as arguments. Each value should be a callable '''
 
-
 class InvalidKeyword(Exception):
     pass
-
 
 def get_input(valid_keywords):
     ''' gets user input '''
@@ -13,12 +11,11 @@ def get_input(valid_keywords):
         return InvalidKeyword()
     return user_input
 
-
-def menu(**kwargs):
+def menu(**options):
     ''' return function '''
-    valid_keywords = kwargs.keys()
+    valid_keywords = options.keys()
     user_input = get_input(valid_keywords)
     while isinstance(user_input, InvalidKeyword):
         print("Please try again.")
         user_input = get_input(valid_keywords)
-    return kwargs[user_input]()
+    return options[user_input]()
