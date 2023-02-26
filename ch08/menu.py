@@ -1,5 +1,9 @@
 '''  menu. The function takes any number of key-value pairs as arguments. Each value should be a callable '''
 
+import mock
+import pytest
+import builtins
+
 class InvalidKeyword(Exception):
     pass
 
@@ -19,3 +23,18 @@ def menu(**options):
         print("Please try again.")
         user_input = get_input(valid_keywords)
     return options[user_input]()
+
+def func_test():
+    ''' dummy function for testing '''
+    return "cheeseburgers"
+
+def test_get_input():
+    ''' test by injecting user input with mock '''
+    # https://stackoverflow.com/a/55033710
+    with mock.patch.object(builtins, 'input', lambda _: 'burger'):
+        print(menu(burger=func_test))
+        assert menu(burger=func_test) == 'cheeseburgers'
+
+if __name__ == '__main__':
+    print("Standalone mode: running tests")
+    test_get_input()
