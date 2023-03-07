@@ -4,8 +4,8 @@
 class Animal:
     ''' base class for animals in a zoo '''
 
-    def __init__(self, species, color, num_legs):
-        self._species = species
+    def __init__(self, color, num_legs):
+        self._species = self.__class__.__name__
         self._color = color
         self._num_legs = num_legs
 
@@ -46,36 +46,32 @@ class Animal:
         self._num_legs = value
 
     def __repr__(self):
-        return f'{self.color.capitalize()} {self.species}, {self.num_legs} legs'
+        return f'{self.color.capitalize()} {self.species.lower()}, {self.num_legs} legs'
 
 
 class Sheep(Animal):
     ''' sheep subclass '''
 
     def __init__(self, color):
-        super().__init__("sheep", color, 4)
-        self._color = color
+        super().__init__(color, 4)
 
 
 class Wolf(Animal):
     ''' wolf subclass '''
 
     def __init__(self, color):
-        super().__init__("wolf", color, 4)
-        self._color = color
+        super().__init__(color, 4)
 
 
 class Snake(Animal):
     ''' snake subclass '''
 
     def __init__(self, color):
-        super().__init__("snake", color, 0)
-        self._color = color
+        super().__init__(color, 0)
 
 
 class Parrot(Animal):
     ''' parrot subclass '''
 
     def __init__(self, color):
-        super().__init__("parrot", color, 2)
-        self._color = color
+        super().__init__(color, 2)
