@@ -5,6 +5,8 @@ class MyEnumerate:
     ''' enumerate an iterable '''
 
     def __init__(self, data):
+        if not hasattr(data, '__iter__'):
+            raise ValueError(f'{data} is not iterable')
         self.data = data
         self.index = 0
 
@@ -24,3 +26,6 @@ for index, letter in enumerate('abc'):
 
 for index, letter in MyEnumerate('abc'):
     print(f'{index}: {letter}')
+
+for index, item in MyEnumerate(123):
+    print(f'{index}: {item}')
